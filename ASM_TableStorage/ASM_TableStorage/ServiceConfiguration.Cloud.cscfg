@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="ASM_TableStorage" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="BookStore">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="DataConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="BlobConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="CloudBlobConnetrionString" value="DefaultEndpointsProtocol=https;AccountName=hoaiemimages;AccountKey=Gi/ktnfwPkRS0DN/85c12+IFdidD7Okg4H3EXuQgMhHkDpDWJ8cAYNP6kDYMV9Fe+PGJGTg3DBKiSQiRItxtLw==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

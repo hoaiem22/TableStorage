@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BookStore.Models.BookEntity>
+
+<body>
+    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+    {
+        <p>
+            BookTitle: @Html.TextBox("searchTitle") <br />
+            <input type="submit" value="Search" />
+        </p>
+    }
+    @*Nếu Model có chứa các cuốn sách*@
+    @if (Model.Count() > 0)
+    {
+        <table class="table" width="500" border="1">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.BookID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookImage)
+                </th>
+                <th width="80">Delete</th>
+                <th width="80">Update</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.BookID)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.BookTitle)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.BookPrice)
+            </td>
+            <td align="center">
+                <img src="@item.BookImage" alt="Alternate Text" style="width:100px;"/>
+            </td>
+            <td align="center">
+                @Html.ActionLink("Delete", "Delete", new { rowKey = item.BookID, partitionKey = item.PartitionKey })
+            </td>
+            <td align="center">
+                @Html.ActionLink("Update", "Update", new { rowKey = item.BookID, partitionKey = item.PartitionKey })
+            </td>
+        </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <h4>Book List is empty.</h4>
+    }
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</body>

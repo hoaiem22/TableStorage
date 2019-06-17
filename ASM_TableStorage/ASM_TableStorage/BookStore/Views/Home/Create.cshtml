@@ -1,0 +1,39 @@
+﻿@model BookStore.Models.BookEntity
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<body>
+    @using (Html.BeginForm("Create", "Home", new { Model }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <fieldset style="width:300px">
+            <legend>Create Book</legend>
+            <div>
+                @Html.LabelFor(model => model.BookID)
+                <div>@Html.EditorFor(model => model.BookID)</div>
+            </div>
+            <div>
+                @Html.LabelFor(model => model.BookTitle)
+                <div>@Html.EditorFor(model => model.BookTitle)</div>
+            </div>
+            <div>
+                @Html.LabelFor(model => model.BookPrice)
+                <div>@Html.EditorFor(model => model.BookPrice)</div>
+            </div>
+            <div>
+                <input type="file" name="imageUpload" /><br />
+            </div>
+            <div><input type="submit" value="Save" /></div>
+            <div>
+                @* Hiện thông báo sau khi thêm*@
+                <h4>@ViewBag.Msg</h4>
+            </div>
+        </fieldset>
+    }
+    <div>
+        @Html.ActionLink("Back to List", "ViewBooks")
+    </div>
+</body>
+
+
