@@ -9,43 +9,43 @@
     {
         @(Html.BeginForm("Edit", "Home", new { Model }, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-    <fieldset style="width:300px">
-        <legend>Create Book</legend>
-        <div>
-            @Html.LabelFor(model => model.RowKey)
-            <div>
-                @Html.EditorFor(model => model.RowKey,
-               new { disabled = "disabled", @readonly = "readonly" })
-            </div>
-        </div>
-        <div>
-            @Html.LabelFor(model => model.PartitionKey)
-            <div>
-                @Html.EditorFor(model => model.PartitionKey,
-               new { disabled = "disabled", @readonly = "readonly" })
-            </div>
-        </div>
-        <div>
-            @Html.LabelFor(model => model.BookID)
-            <div>@Html.EditorFor(model => model.BookID)</div>
-        </div>
-        <div>
-            @Html.LabelFor(model => model.BookTitle)
-            <div>@Html.EditorFor(model => model.BookTitle)</div>
-        </div>
-        <div>
-            @Html.LabelFor(model => model.BookPrice)
-            <div>@Html.EditorFor(model => model.BookPrice)</div>
-        </div>
-        <div>
-            <input type="file" name="imageUpload" /><br />
-        </div>
-        <div><input type="submit" value="Update" /></div>
-        <div>
-            @* Hiện thông báo sau khi Update*@
-            <h4>@ViewBag.Msg</h4>
-        </div>
-    </fieldset>
+            <fieldset style="width:300px">
+                <legend>Create Book</legend>
+                <div>
+                    @Html.LabelFor(model => model.RowKey)
+                    <div>
+                        @Html.EditorFor(model => model.RowKey,
+                       new { disabled = "disabled", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div>
+                    @Html.LabelFor(model => model.PartitionKey)
+                    <div>
+                        @Html.EditorFor(model => model.PartitionKey,
+                       new { disabled = "disabled", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div>
+                    @Html.LabelFor(model => model.BookID)
+                    <div>@Html.EditorFor(model => model.BookID)</div>
+                </div>
+                <div>
+                    @Html.LabelFor(model => model.BookTitle)
+                    <div>@Html.EditorFor(model => model.BookTitle)</div>
+                </div>
+                <div>
+                    @Html.LabelFor(model => model.BookPrice)
+                    <div>@Html.EditorFor(model => model.BookPrice)</div>
+                </div>
+                <div>
+                    <input type="file" name="imageUpload" /><br />
+                </div>
+                <div><input type="submit" value="Update" /></div>
+                <div>
+                    @* Hiện thông báo sau khi Update*@
+                    <h4>@ViewBag.Msg</h4>
+                </div>
+            </fieldset>
         }
     }
     else
@@ -56,5 +56,14 @@
         @Html.ActionLink("Back to List", "ViewBooks")
     </div>
 </body>
+<script>
+    $(document).ready(function () {
+        console.log("Set disable");
+        $('#RowKey').prop('readonly', true);
+        $('#PartitionKey').prop('readonly', true);
+        $("PartitionKey").prop('disabled', false);
+        $("RowKey").prop('disabled', true);
+    });
+</script>
 
 
